@@ -1,18 +1,14 @@
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import BookList from './Pages/BookList';
-import BookInfo from './Pages/BookInfo';
 
-function App() {
-    return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<BookList />} />
-                <Route path="/api/books/:id" element={<BookInfo />} />
-            </Routes>
-        </Router>
-    );
-}
+import { createRoot } from 'react-dom/client'
+import { createInertiaApp } from '@inertiajs/inertia-react';
 
-const root = ReactDOM.createRoot(document.getElementById('app')!);
-root.render(<App />);
+createInertiaApp({
+    resolve: (name) => import(`./Pages/${name}`).then((module) => module.default),
+    setup({ el, App, props }) {
+        const root = createRoot(el)
+        root.render(
+            <App {...props} />
+        )
+    },
+    title: (title) => (title ? title : 'BookTest'),
+})
