@@ -390,6 +390,9 @@
   .h-\[200px\] {
     height: 200px;
   }
+  .h-\[300px\] {
+    height: 300px;
+  }
   .max-h-32 {
     max-height: calc(var(--spacing) * 32);
   }
@@ -711,8 +714,14 @@
   .text-\[12px\] {
     font-size: 12px;
   }
+  .text-\[14px\] {
+    font-size: 14px;
+  }
   .text-\[16px\] {
     font-size: 16px;
+  }
+  .text-\[18px\] {
+    font-size: 18px;
   }
   .leading-5 {
     --tw-leading: calc(var(--spacing) * 5);
@@ -777,6 +786,9 @@
   .uppercase {
     text-transform: uppercase;
   }
+  .italic {
+    font-style: italic;
+  }
   .underline {
     text-decoration-line: underline;
   }
@@ -829,6 +841,10 @@
     --tw-duration: 150ms;
     transition-duration: 150ms;
   }
+  .duration-200 {
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+  }
   .ease-in-out {
     --tw-ease: var(--ease-in-out);
     transition-timing-function: var(--ease-in-out);
@@ -856,6 +872,13 @@
       @media (hover: hover) {
         border-bottom-right-radius: var(--radius-md);
         border-bottom-left-radius: var(--radius-md);
+      }
+    }
+  }
+  .hover\:border-red-500 {
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-red-500);
       }
     }
   }

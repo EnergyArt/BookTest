@@ -1,35 +1,31 @@
 import React, { useState, useEffect } from "react";
 import BookCard from "../Components/BookCard";
 import axios from 'axios';
-
-interface Books {
-    id: number;
-    title: string | null;
-    author: string | null;
-    year: number | null;
-    genre: string | null;
-    description: string | null;
-    created_at: Date;
-    updated_at: Date;
-}
+import { Books } from "../Interfaces/Book";
 
 function BookList() {
-    const items = [];
+    const [books, setBooks] = useState<Books[] | null>();
 
-    useEffect(() => {
-        const response = axios.get()
+    const fetchBooks = async () => {
+        const response = await axios.get('/api/books');
+        setBooks(response.data.books);
+    };
+
+    useEffect( () => {
+        fetchBooks();
     }, []);
 
     return(
         <div className="flex justify-center w-full p-[50px]">
             <div className="grid grid-cols-3 gap-[30px]">
-                {items.map(item => (
-                    <BookCard 
-                        titleP={}
-                        authorP={}
-                        yearP={}
-                        genreP={}
-                        descriptionP={}
+                {books?.map(book => (
+                    <BookCard
+                        id={book.id}
+                        title={book.title}
+                        author={book.author}
+                        year={book.year}
+                        genre={book.genre}
+                        description={book?.description}
                     />
                 ))}
             </div>
