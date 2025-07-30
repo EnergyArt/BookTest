@@ -2,7 +2,7 @@ export interface Reviews {
     id: number;
     username: string;
     rating: number;
-    comment: string;
+    comment?: string;
     book_id?: number;
     created_at?: string;
     updated_at?: string;
